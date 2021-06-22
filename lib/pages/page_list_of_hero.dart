@@ -7,6 +7,9 @@ class ListOfHero extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Characters"),
+      ),
       body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(

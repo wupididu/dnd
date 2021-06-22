@@ -1,4 +1,5 @@
 import 'package:dnd/pages/page_list_of_hero.dart';
+import 'package:dnd/pages/page_menu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>ListOfHero()));
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>MenuPage()));
         },
         child: Container(
           decoration: BoxDecoration(
