@@ -1,13 +1,12 @@
 import 'package:dnd/models/model.dart';
-import 'package:dnd/models/model_class.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-mixin ControlOFClass{
-  Future<void> getListOfClass() ;
+mixin ControlOFModels{
+  Future<void> getListOfModel(String name_of_table);
 
-  Future<void> addClass(ClassOfHero item);
+  Future<void> addModel(Model item, String name_of_table);
 
-  Future<void> removeClass(ClassOfHero item);
+  Future<void> removeModel(Model item, String name_of_table);
 }
 
 class AppState{
@@ -16,7 +15,7 @@ class AppState{
   AppState(this.listOfModel);
 }
 
-abstract class AbstractAppCubit extends Cubit<AppState> with ControlOFClass{
+abstract class AbstractAppCubit extends Cubit<AppState> with ControlOFModels{
   AbstractAppCubit(AppState initialState) : super(initialState);
 }
 

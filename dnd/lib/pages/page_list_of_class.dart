@@ -1,7 +1,9 @@
 import 'package:dnd/constants.dart';
 import 'package:dnd/logic/abstracts.dart';
 import 'package:dnd/logic/app_cubit.dart';
+import 'package:dnd/models/model_ability_scores.dart';
 import 'package:dnd/models/model_class.dart';
+import 'package:dnd/pages/page_creationg_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,9 +13,6 @@ class PageListOfClass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppCubit appCubit = AppCubit(TABLE_CLASS);
-    ClassOfHero item = ClassOfHero(id: "robbot", abilityScoresID: 1, description: "bojenka", name: "Robbot",hitDice: 1, imgUrl: "#");
-    appCubit.addClass(item);
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Class"),
@@ -37,7 +36,11 @@ class PageListOfClass extends StatelessWidget {
             );}
           ),
         ),
-        
+        floatingActionButton: FloatingActionButton(
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>PageCreationgClass()));
+          },
+        ),
     );
   }
 }

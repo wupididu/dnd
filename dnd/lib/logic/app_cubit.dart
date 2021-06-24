@@ -11,22 +11,22 @@ class AppCubit extends AbstractAppCubit {
   AppCubit(String table) : super(AppState([]));
 
   @override
-  Future<void> addClass(ClassOfHero item) async {
-    await db.insert(TABLE_CLASS, item);
-    List<Map<String, dynamic>> table = await db.query(TABLE_CLASS);
+  Future<void> addModel(Model item, String name_of_table) async {
+    await db.insert(name_of_table, item);
+    List<Map<String, dynamic>> table = await db.query(name_of_table);
     emit(AppState(table));
   }
 
   @override
-  Future<void> removeClass(ClassOfHero item) async {
-    await db.delete(TABLE_CLASS, item);
-    List<Map<String, dynamic>> table = await db.query(TABLE_CLASS);
+  Future<void> removeModel(Model item, String name_of_table) async {
+    await db.delete(name_of_table, item);
+    List<Map<String, dynamic>> table = await db.query(name_of_table);
     emit(AppState(table));
   }
 
   @override
-  Future<void> getListOfClass() async {
-    List<Map<String, dynamic>> table = await db.query(TABLE_CLASS);
+  Future<void> getListOfModel(String name_of_table) async {
+    List<Map<String, dynamic>> table = await db.query(name_of_table);
     emit(AppState(table));
   }
 
