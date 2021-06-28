@@ -17,7 +17,7 @@ class AbilityScores extends Model {
       {required this.charisma,
       required this.constitution,
       required this.dexterity,
-      required this.id,
+      this.id,
       required this.intelligence,
       required this.strength,
       required this.wisdom});

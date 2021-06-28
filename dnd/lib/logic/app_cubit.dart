@@ -11,10 +11,11 @@ class AppCubit extends AbstractAppCubit {
   AppCubit(String table) : super(AppState([]));
 
   @override
-  Future<void> addModel(Model item, String name_of_table) async {
-    await db.insert(name_of_table, item);
+  Future<int> addModel(Model item, String name_of_table) async {
+    int id = await db.insert(name_of_table, item);
     List<Map<String, dynamic>> table = await db.query(name_of_table);
     emit(AppState(table));
+    return id;
   }
 
   @override
@@ -29,5 +30,4 @@ class AppCubit extends AbstractAppCubit {
     List<Map<String, dynamic>> table = await db.query(name_of_table);
     emit(AppState(table));
   }
-
 }

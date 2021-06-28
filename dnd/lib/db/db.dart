@@ -8,9 +8,9 @@ import 'package:path/path.dart';
 
 class DBProvider {
   DBProvider._();
-  
+
   static final DBProvider instance = DBProvider._();
-  
+
   static Database? _db;
 
   static int get _version => 2;
@@ -24,13 +24,13 @@ class DBProvider {
 
   Future close() async {
     final db = await instance.database;
-    
+
     db.close();
   }
 
   static Future<Database> init() async {
     Directory dbDir = await getApplicationDocumentsDirectory();
-    String _path = join(dbDir.path,'database.db');
+    String _path = join(dbDir.path, 'database.db');
     return await openDatabase(_path, version: _version, onCreate: onCreate);
   }
 
@@ -53,18 +53,20 @@ class DBProvider {
 
   Future<int> insert(String table, Model model) async {
     final db = await database;
-    return await db.insert(table, model.toMap(), conflictAlgorithm: ConflictAlgorithm.replace);
+    return await db.insert(table, model.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<int> update(String table, Model model) async {
     final db = await database;
     return await db.update(table, model.toMap(),
-          where: '${model.ID} = ?', whereArgs: [model.id]);
+        where: '${model.ID} = ?', whereArgs: [model.id]);
   }
 
   Future<int> delete(String table, Model model) async {
     final db = await database;
-    return await db.delete(table, where: '${model.ID} = ?', whereArgs: [model.id]);
+    return await db
+        .delete(table, where: '${model.ID} = ?', whereArgs: [model.id]);
   }
 
   static String get _tableHero => """
@@ -170,5 +172,5 @@ class DBProvider {
       $RACE_ID VARCHAR(255),
       FOREIGN KEY($RACE_ID) REFERENCES $TABLE_RACE($RACE_ID)
     );
-  """;  
+  """;
 }

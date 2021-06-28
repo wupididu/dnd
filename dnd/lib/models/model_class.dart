@@ -22,6 +22,7 @@ class ClassOfHero extends Model {
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
+      CLASS_ID: id,
       CLASS_NAME: name,
       CLASS_DESC: description,
       CLASS_HIT_DICE: hitDice,
